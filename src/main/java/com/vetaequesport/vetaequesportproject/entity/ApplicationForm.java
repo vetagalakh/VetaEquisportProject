@@ -1,7 +1,7 @@
 package com.vetaequesport.vetaequesportproject.entity;
 
+import javax.persistence.Entity;
 import java.util.Objects;
-
 public class ApplicationForm {
     private String nameParticipant;
     private String horseName;

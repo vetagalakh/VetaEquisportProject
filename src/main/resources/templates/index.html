@@ -5,9 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,  initil-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <title>VETA EQUISPORT</title>
-    <link rel="stylesheet" href="/CSS/style.csss">
-    <script scr="script.js" defer></script>
+    <link rel="stylesheet" href="/CSS/style.css">
+    <script scr="script/javascript.js" defer></script>
+
 </head>
 <body>
     <header class ="header">
@@ -16,27 +20,27 @@
             <div class="header_wrapper">
                 <div class="header_logo">
                     <a href="/" class="header_logo-link">
-                       <img src="/img/svg/logo.svg" alt="VETA EQUISPOR" class="header_logo-pic"> 
+                       <img src="/img/svg/logo.svg" alt="VETA EQUISPORT" class="header_logo-pic">
                     </a>
                 </div>
-        
+
                 <nav class="header_nav">
+
                     <ul class="header_list">
-                        <li class="header_item">
-                            <a href="#!" class="header_link">Главная</a>
+                        <li class="active">
+                            <a href="#" class="header_link">Главная</a>
                         </li>
                         <li class="header_item">
-                            <a href="#!" class="header_link">Календарь</a>
+                            <a href="routes" class="header_link">Серии турниров</a>
                         </li>
                         <li class="header_item">
-                            <a href="#!" class="header_link">Серии турниров</a>
+                            <a href="user" class="header_link">Личный кабинет</a>
                         </li>
                         <li class="header_item">
-                            <a href="#!" class="header_link">Войти</a>
+                            <a href="registration" class="header_link">Войти</a>
                         </li>
                     </ul>
                 </nav>
-            </div>
 
 
     </header>
@@ -53,94 +57,119 @@
         </div>
         </section>
     </main>
-
-    <article class="container">
-        <div class="block"> 
-            <section class="block_item block-item">
-                <h2 class="block-item_title">У вас уже есть аккаунт?</h2>
-                <button class="block-item_btn signin-btn">Войти</button>
-            </section>
-            <section class="block_item block-item">
-                <h2 class="block-item_title">У вас нет аккаунта?</h2>
-                <button class="block-item_btn signup-btn">Зарегистрироваться</button>
-            </section>
-</article>
-
-
+    <div class="container"></div>
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="/img/1.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Награждение победителей и призёров Чемпионата РБ по преодолению препятствий</h5>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="/img/2.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5> Чемпионат РБ, Виолетта Скиба и Круз Z, 130см </h5>
+                </div>
+            </div>
         </div>
-        <div class="form-box">
-            <p th:text ="${loginForm}"></p>
-<form th:action="@{/login}" th:object="${loginForm}" th:method="POST" class="form form_signin">
-<h3 class="form_title">Вход</h3>
-<p>
-    <input type="text" th:field="*{login}" name="login" class="form_input" placeholder="Логин">
-
-</p>
-<p>
-    <input type="password" th:field="*{password}" name="password" class="form_input" placeholder="Пароль">
-</p>
-<p> 
-    <button class="form_btn">Войти</button>
-</p>
-<p>
-    <a href="#" class="form_forgot">Восстановить пароль</a>
-</p>
-
-</form>
-
-<div class="form-box">
-    <div th:switch="${session.registrationStatus}">
-        <p th:case="'LOGIN_EXISTS'">Login is used</p>
-        <p th:case="'EMAIL_EXISTS'">Email is used</p>
     </div>
-    <p th:text ="${session.registrationStatus}"></p>
-    <form th:action="@{/registration}" th:object="${registrationForm}" th:method="POST" class="form form_signup">
-    <h3 class="form_title">Регистрация</h3>
-    <p>
-        <input type="text" th:field="*{login}" name="login" class="form_input" placeholder="Логин">
-    
-    </p>
-    <p>
-        <input type="email" th:field="*{email}" name="email" class="form_input" placeholder="Email">
-    
-    </p>
-    <p>
-        <input type="password" th:field="*{password}" name="password" class="form_input" placeholder="Пароль">
-    </p>
-    <p>
-        <input type="password" th:field="*{passwordRepeated}" name="passwordRepeated" class="form_input" placeholder="Подтвердите пароль">
-    </p>
-    <p> 
-        <button class="form_btn form_btn_signup">Зарегистрироваться</button>
-    </p>
-    
-    
-    </form>
+    </div>
 
-    <div class="form-box">
-        <p th:text ="${applicationForm}"></p>
-        <form th:action="@{/application}" th:object="${applicationForm}" th:method="POST" class="form form_signup">
-            <h3 class="form_title">Подача заявки</h3>
-            <p>
-                <input type="text" th:field="*{nameParticipant}" name="nameParticipant" class="form_input" placeholder="ФИО участника">
 
-            </p>
-            <p>
-                <input type="text" th:field="*{horseName}" name="horseName" class="form_input" placeholder="Кличка лошади">
 
-            </p>
-            <p>
-                <input type="number" th:field="*{rang}" name="rang" class="form_input" placeholder="Номер маршрута">
-            </p>
-            <p>
-                <input type="number" th:field="*{yearOfBirth}" name="yearOfBirth" class="form_input" placeholder="Год рождения участника">
-            </p>
-            <p>
-                <button class="form_btn form_btn_signup">Подать заявку</button>
-            </p>
 
-        </form>
 
+
+
+    <div class="about-page__contacts contacts">
+        <div class="contacts__main">
+            <div class="contacts__col">
+                <h3 class="contacts__title contacts__title_sm">Контакты</h3>
+                <div class="contacts__list">
+                    <div class="contacts__item">
+                        <div class="contacts__value">
+                            <p><a href="tel:+375296452003" class="contacts__phone">+375 (29) 6452003</a></p>
+                            <p><a href="mailto:info@VetaEquisport.ru" class="contacts__email">info@VetaEquisport.ru</a></p>
+                        </div>
+                    </div>
+                    <div class="contacts__item">
+                        <div class="contacts__value">Минская обл., аг. Ратомка, ул. Корицкого 136</div>
+                    </div>
+                </div>
+            </div>
+            <div class="contacts__col">
+                <div id="comp_e7bcf8b8604ac4d057dfdc5bb14e293a">
+
+                    <form name="write_us" action="/about/" method="POST" class="contacts__form contacts__form_light js-validate" enctype="multipart/form-data" novalidate="novalidate"><input type="hidden" name="bxajaxid" id="bxajaxid_e7bcf8b8604ac4d057dfdc5bb14e293a_8BACKi" value="e7bcf8b8604ac4d057dfdc5bb14e293a"><input type="hidden" name="AJAX_CALL" value="Y">    <input type="hidden" name="sessid" id="sessid_1" value="5156eb39932947b13c03478a757c7745">    <input type="hidden" name="WEB_FORM_ID" value="1">
+                        <div class="contacts__form-header">
+                            <p class="contacts__form-title">Если у вас есть вопросы, напишите нам</p>
+                        </div>
+                        <div class="contacts__form-row">
+                            <input class="contacts__form-input" name="form_text_1" type="text" placeholder="Ваше имя" value="" required="" aria-required="true">
+                        </div>
+                        <div class="contacts__form-row">
+                            <input class="contacts__form-input" name="form_email_2" type="text" placeholder="E-mail" value="" required="" aria-required="true">
+                        </div>
+                        <div class="contacts__form-row">
+                            <input class="contacts__form-input" data-inputmask="'mask': '+7 (999) 999-99-99'" name="form_text_3" type="tel" placeholder="Номер телефона" value="" required="" aria-required="true">
+                        </div>
+                        <div class="contacts__form-footer">
+                            <div class="contacts__form-checkbox">
+                                <label class="checkbox">
+                <span class="checkbox__box">
+                    <input type="checkbox" name="userAgree" class="checkbox__control" required="" aria-required="true">
+                    <span class="checkbox__indicator"></span>
+                </span>
+                                    <span class="checkbox__content">Заполняя форму я даю согласие на обработку<a href="/privacy/"> персональных данных</a></span>
+                                </label>
+                            </div>
+                            <input type="submit" name="web_form_submit" value="Отправить" class="contacts__form-btn g-button">
+                        </div>
+                    </form>
+                </div>                                </div>
         </div>
+    </div>
+
+
+
+
+    <footer class="footer">
+    <div class="footer__row footer__row_top">
+        <div class="g-wrap">
+            <div class="footer__nav">
+                <div class="footer__nav-group">
+                    <div class="footer__nav-item footer__nav-item--main">
+                        <a href="/" class="footer__nav-link footer__nav-link--main"></a>
+                    </div>
+                </div>
+
+                <div class="footer__nav-group">
+                    <div class="footer__nav-item"><a href="https://www.Vetastables.ru/" class="footer__nav-link">Veta Stables</a></div>
+                    <div class="footer__nav-item"><a href="https://www.Vetamavet.ru/" class="footer__nav-link">Veta Vet</a></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="footer__row footer__row_bottom">
+        <div class="g-wrap">
+            <div class="footer__info">
+                <p>@ Veta Equisport</p>
+                <a href="/privacy/" class="footer__agreement">Соглашение на обработку персональных данных</a>
+                <div class="footer__developers">
+                </div>
+            </div>
+        </div>
+    </footer>
+    </div>
+
+
+
+
 </body>
 </html>

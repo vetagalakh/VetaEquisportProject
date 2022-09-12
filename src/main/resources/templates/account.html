@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org" lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,  initil-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>VETA EQUISPORT</title>
+    <link rel="stylesheet" href="/CSS/style.css">
+    <script scr="script/javascript.js" defer></script>
+</head>
+<body>
+<header class ="header">
+    <div class="wrapper">
+        <p th:text="${user}"></p>
+        <div class="header_wrapper">
+            <div class="header_logo">
+                <a href="/" class="header_logo-link">
+                    <img src="/img/svg/logo.svg" alt="VETA EQUISPOR" class="header_logo-pic">
+                </a>
+            </div>
+
+            <nav class="header_nav">
+
+                <ul class="header_list">
+                    <li class="active">
+                        <a href="/" class="header_link">Главная</a>
+                    </li>
+                    <li class="header_item">
+                        <a href="routes" class="header_link">Серии турниров</a>
+                    </li>
+                    <li class="header_item">
+                        <a href="user" class="header_link">Личный кабинет</a>
+                    </li>
+                    <li class="header_item">
+                        <a href="registration" class="header_link">Войти</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        </header>
+
+<div  class="container reg_form">
+    <div th:switch="${session.registrationStatus}">
+        <p th:case="'LOGIN_EXISTS'">Login is used</p>
+        <p th:case="'EMAIL_EXISTS'">Email is used</p>
+    </div>
+    <p th:text ="${session.registrationStatus}"></p>
+    <form th:action="@{/registration}" th:object="${registrationForm}" th:method="POST"  class="row justify-content-md-center" action="account">
+        <h2 class="col-12">Форма регистрации</h2>
+        <div class="mb-3 col-12 col-md-4">
+            <label for="formGroupExampleInput" class="form-label">Логин</label>
+            <input type="text" th:field="*{login}" name="login" class="form-control" id="formGroupExampleInput" placeholder="введите логин...">
+        </div>
+        <div class="w-100"></div>
+        <div class="mb-3 col-12 col-md-4">
+            <label for="exampleInputEmail1" class="form-label">Email</label>
+            <input type="email"  th:field="*{email}" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="введите email...">
+            <div id="emailHelp" class="form-text">Ваш email не будет использоваться для спама!</div>
+        </div>
+        <div class="w-100"></div>
+        <div class="mb-3 col-12 col-md-4">
+            <label for="exampleInputPassword1" class="form-label">Пароль</label>
+            <input type="password" th:field="*{password}" name="password" class="form-control" id="exampleInputPassword1" placeholder="введите пароль...">
+        </div>
+        <div class="w-100"></div>
+        <div class="mb-3 col-12 col-md-4">
+            <label for="exampleInputPassword1" class="form-label">Повторите пароль</label>
+            <input type="password" th:field="*{passwordRepeated}" name="passwordRepeated" class="form-control" id="exampleInputPassword2" placeholder="повторите пароль...">
+        </div>
+        <div class="w-100"></div>
+        <div class="mb-3 col-12 col-md-4">
+            <p>
+                <button class="form_btn form_btn_signup">Зарегистрироваться</button>
+            </p>
+        </div>
+    </form>
+</div>
+
+
+<div th:unless = "${session.loginStatus == 'OK'}" class="container reg_form">
+    <p th:text ="${loginForm}"></p>
+    <form  th:action="@{/login}" th:object="${loginForm}" th:method="POST" class="row justify-content-md-center" action="log">
+        <h2 class="col-12">Авторизация</h2>
+        <div class="mb-3 col-12 col-md-4">
+            <label for="formGroupExampleInput" class="form-label">Логин</label>
+            <input type="text" th:field="*{login}" name="login" class="form-control" id="formGroupExampleInput2" placeholder="введите логин...">
+        </div>
+        <div class="w-100"></div>
+        <div class="mb-3 col-12 col-md-4">
+            <label for="exampleInputPassword1" class="form-label">Пароль</label>
+            <input type="password" th:field="*{password}" name="password" class="form-control" id="exampleInputPassword3" placeholder="введите пароль...">
+        </div>
+        <div class="w-100"></div>
+        <div class="mb-3 col-12 col-md-4">
+            <p>
+                <button class="form_btn">Войти</button>
+            </p>
+        </div>
+    </form>
+    <p th:text ="${session.loginStatus}"></p>
+    <div th:if = "${session.loginStatus == 'OK'}" class="form-box">
+        <p th:text ="${applicationForm}"></p>
+        <form th:action="@{/application}" th:object="${applicationForm}" th:method="POST" class="form form_signup">
+            <h3 class="form_title">Подача заявки</h3>
+            <p>
+                <input type="text" th:field="*{nameParticipant}" name="nameParticipant" class="form_input" placeholder="ФИО участника">
+
+            </p>
+            <p>
+                <input type="text" th:field="*{horseName}" name="horseName" class="form_input" placeholder="Кличка лошади">
+
+            </p>
+            <p>
+                <input type="number" th:field="*{rang}" name="rang" class="form_input" placeholder="Номер маршрута">
+            </p>
+            <p>
+                <input type="number" th:field="*{yearOfBirth}" name="yearOfBirth" class="form_input" placeholder="Год рождения участника">
+            </p>
+            <p>
+                <button class="form_btn form_btn_signup">Подать заявку</button>
+            </p>
+
+
+        </form>
+
+    </div>
+
+</body>
+</html>

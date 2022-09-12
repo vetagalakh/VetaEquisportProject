@@ -13,6 +13,7 @@ public class Validator {
     private static final String SURNAME_REGEX = "^[\\p{L}_]{1,30}$";
 
 
+
     private static boolean validate(String data, String regex) {
 
         return data != null && data.matches(regex);

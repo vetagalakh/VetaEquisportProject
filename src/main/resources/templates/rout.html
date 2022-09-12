@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org" lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+
+</head>
+<body>
+<p th:text = "${participants}"></p>
+
+<tr th:each="participant : ${participants}">
+  <td th:text="${participant.id}"></td>
+  <td th:text="${participant.nameParticipant}"></td>
+  <td th:text="${participant.horseName}"></td>
+  <td th:text="${participant.yearOfBirth}"></td>
+</tr>
+</body>
+</html>

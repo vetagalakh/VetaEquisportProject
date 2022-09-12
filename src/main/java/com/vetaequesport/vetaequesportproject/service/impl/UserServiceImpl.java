@@ -8,12 +8,16 @@ import com.vetaequesport.vetaequesportproject.service.UserService;
 import com.vetaequesport.vetaequesportproject.service.Validator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
+
 import static com.vetaequesport.vetaequesportproject.constant.RegistrationAttributes.*;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
     private Validator validator;
@@ -80,9 +84,9 @@ public class UserServiceImpl implements UserService {
         }
         return result;
     }
-    public Optional<Integer> findUser(LoginForm loginForm) {
-        return userRepository.findUser(loginForm.getLogin(), loginForm.getPassword());
+    public String findUser(LoginForm loginForm) {
+        String result = userRepository.findUser(loginForm.getLogin(), loginForm.getPassword()).isPresent() ? OK: USER_NOT_FOUND;
+        return result;
+
     }
-
-
 }

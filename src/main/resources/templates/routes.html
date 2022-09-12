@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org" lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,  initil-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>VETA EQUISPORT</title>
+    <link rel="stylesheet" href="/CSS/style.css">
+    <script scr="script/javascript.js" defer></script>
+</head>
+<body>
+<p th:text = "${routes}"></p>
+
+<tr th:each="rout : ${routes}">
+    <a th:href="@{'/rout/' + ${rout.idRout}}" >Список участников</a>
+    <div class="w-100"></div>
+    <td th:text="${rout.nameRout}"></td>
+    <div class="w-100"></div>
+    <td th:text="${rout.descRout}"></td>
+    <div class="w-100"></div>
+</tr>
+</body>
+
+
+<div class="g-main  ">
+    <div class="g-main__header">
+        <div class="g-wrap">
+
+            <div class="breadcrumbs">
+                <div class="breadcrumbs__list">
+                    <a class="breadcrumbs__item" href="/">Главная</a>
+                    <a class="breadcrumbs__item" href="routes">Серии турниров</a>
+                </div>
+            </div>
+
+            <h1 class="g-main__title">Серии турниров</h1>
+        </div>
+    </div>
+    <div class="g-main__content">
+
+
+
+
+
+            <div class="tournament-list js-tournament-container">
+
+                <div class="card card_link card_tourn">
+                    <div class="card__header">
+                        <p class="card__date">07 - 10 Сентября</p>
+                        <a href="/img/положение%202.pdf" target="_blank" class="card__application">Положение соревнований</a>
+                        <div class="w-100"></div>
+                        <a href="/img/08.pdf" target="_blank" class="card__application">Стартовый протокол 08.09</a>
+                        <div class="w-100"></div>
+                        <a href="/img/09.pdf" target="_blank" class="card__application">Стартовый протокол 09.09</a>
+                        <div class="w-100"></div>
+                        <a href="/img/10.pdf" target="_blank" class="card__application">Стартовый протокол 10.09</a>
+
+                    </div>
+                    <div class="card__content">
+                        <div class="card__title-row">
+                            <a href="https://xn--i1abjaddgjgn7g.xn--90ais/novoe-imya-chempiona-belarusi-po-preodoleniyu-prepyatstvij/" class="card__title">ЧЕМПИОНАТ РЕСПУБЛИКИ БЕЛАРУСЬ ПО ПРЕОДОЛЕНИЮ ПРЕПЯТСВИЙ</a>
+                        </div>
+                        <div class="card__info-row">
+                            <div class="card__info">
+                                <p class="card__info-name">Дисциплина</p>
+                                <p class="card__info-value">
+                                    Конкур<br>
+                                </p>
+                                <p class="card__info-name">Призовой фонд</p>
+                                <p class="card__info-value">7 000</p>
+                            </div>
+                        </div>
+                        <div class="card__desc">
+                            <p class="card__desc-title">Серия завершена</p>
+                            <p class="card__desc-title">ЧЕМПИОН РБ - ОКСАНА МАХНАЧ И БОРИДОР</p>
+
+                        </div>
+                    </div>
+                </div>
+
+
+        </div><!--g-main__content-->
+    </div><!--g-main-->
+
+
+
+
+</html>

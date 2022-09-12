@@ -9,4 +9,6 @@ public class RegistrationAttributes {
     public static final String NO_EMAIL = "NO_EMAIL";
     public static final String PASSWORD_NO_EQUALS = "PASSWORD_NO_EQUALS";
 
+    public static final String USER_NOT_FOUND = "USER_NOT_FOUND";
+
 }

@@ -16,7 +16,6 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     @Modifying
     @Query(value = "INSERT INTO login (login, email, password) VALUES (:login, :email, :password)",
             nativeQuery = true)
-    @Transactional
     void addUser(@Param("login") String login, @Param("email") String email, @Param("password") String password);
 
     @Query(value = "SELECT id FROM login WHERE (login=:login) AND (password=:password)", nativeQuery = true)
@@ -27,6 +26,8 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
     @Query(value = "SELECT id FROM login WHERE (email=:email)", nativeQuery = true)
     Optional<Integer> checkEmail(@Param("email") String email);
+
+    // @Query(value = "SELECT name, FROM")
 
 }
 

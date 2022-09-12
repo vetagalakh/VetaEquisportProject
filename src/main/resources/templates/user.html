@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org" lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,  initil-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>VETA EQUISPORT</title>
+  <link rel="stylesheet" href="/CSS/style.css">
+  <script scr="script/javascript.js" defer></script>
+</head>
+<body>
+<header class ="header">
+  <div class="wrapper">
+    <p th:text="${user}"></p>
+    <div class="header_wrapper">
+      <div class="header_logo">
+        <a href="/" class="header_logo-link">
+          <img src="/img/svg/logo.svg" alt="VETA EQUISPORT" class="header_logo-pic">
+        </a>
+      </div>
+
+      <nav class="header_nav">
+
+        <ul class="header_list">
+          <li class="active">
+            <a href="/" class="header_link">Главная</a>
+          </li>
+          <li class="header_item">
+            <a href="routes" class="header_link">Серии турниров</a>
+          </li>
+          <li class="header_item">
+            <a href="user" class="header_link">Личный кабинет</a>
+          </li>
+          <li class="header_item">
+            <a href="registration" class="header_link">Войти</a>
+          </li>
+        </ul>
+      </nav>
+
+<div class="g-main  ">
+  <div class="g-main__header">
+    <div class="g-wrap">
+
+      <div class="breadcrumbs">
+        <div class="breadcrumbs__list">
+          <a class="breadcrumbs__item"
+             href="/">Главная</a>
+          <a class="breadcrumbs__item"
+             href="javascript:void(0)">Мой профиль</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="g-main__content">
+    <style>
+      #profile-regions_rus, #profile-regions_int {margin-right: 0;}
+      #sportsman-regions_rus, #sportsman-regions_int {margin-right: 0;}
+    </style>
+
+
+    <div class="g-wrap">
+      <div class="lk">
+        <div class="lk-header">
+          <div class="lk-header__col">
+            <h1 class="lk-header__title">Мой профиль</h1>
+          </div>
+          <div class="lk-header__col">
+            <a href="javascript:void(0)" class="lk-header__edit"
+               data-remodal-target="editProfile">
+              Редактировать
+            </a>
+            <a href="javascript:void(0)" class="lk-header__edit"
+               data-remodal-target="updatePassword">
+              Изменить пароль
+            </a>
+          </div>
+          <div class="lk-header__col">
+            <a href="/?logout=yes" class="lk-header__edit">
+              Выход
+            </a>
+          </div>
+
+        </div>
+        <div class="lk-content">
+          <div class="lk-profile">
+            <div class="lk-profile__col">
+              <div class="lk-profile__photo">
+                <img src="/local/assets/dist//images/lk/lk-no-photo.svg"
+                     class="lk-profile__img" alt="">
+              </div>
+            </div>
+            <div class="lk-profile__col lk-profile__col_flex">
+              <div class="lk-profile__contacts">
+                <p class="lk-profile__title">
+                  Галах<br>                                                                                                    Виолетта Андреевна                                                            </p>
+                <div class="lk-profile__row">
+                  <div class="lk-profile__data lk-data">
+                    <p class="lk-data__name">Телефон</p>
+                    <p class="lk-data__val">+375 (29) 611 - 12 - 21</p>
+                  </div>
+                  <div class="lk-profile__data lk-data">
+                    <p class="lk-data__name">E-mail</p>
+                    <p class="lk-data__val">galakhvetta1@gmail.com</p>
+                  </div>
+                </div>
+                <div class="lk-profile__row">
+                  <div class="lk-profile__data lk-data">
+                    <p class="lk-data__name">Дата рождения:</p>
+                    <p class="lk-data__val">03.08.2003</p>
+                  </div>
+                  <div class="lk-profile__data lk-data">
+                    <p class="lk-data__val lk-data__val_city">
+                      Беларусь, Минск, Минск</p>
+                  </div>
+                </div>
+              </div>
+              <div class="lk-profile__info">
+                <div class="lk-profile__data lk-data">
+                  <p class="lk-data__name">Разряд:</p>
+                  <p class="lk-data__val">КМС</p>
+                </div>
+                <div class="lk-profile__data lk-data">
+                  <p class="lk-data__name">Номер БФКС:</p>
+                  <p class="lk-data__val">22</p>
+                </div>
+            </div>
+          </div>
+          <div class="tabs js-tabs" data-hash="true" data-tabs-name="main">
+            <div class="tabs__header js-lk-tabs-slider">
+              <a href="#horses" class="tabs__item-light js-tabs-link is-active"
+                 data-tabs-name="main" data-group="01">ЛОШАДИ (<span class="js-horses-count">0</span>)</a>
+              <a href="#orders" class="tabs__item-light js-tabs-link" data-tabs-name="main"
+                 data-group="02">Заявки</a>
+            </div>
+            <div class="tabs__content js-tabs-content" data-tabs-name="main" data-group="01">
+              <div class="lk-button">
+                <a href="javascript:void(0)" class="g-button newHorse" data-id="NEW" data-remodal-target="editHorse"><span>Добавить</span> <span>лошадь</span></a>
+              </div>
+              В настоящий момент вы не добавили ни одной лошади
+            </div>
+            <div class="tabs__content js-tabs-content" data-tabs-name="main" data-group="02">
+              <div class="lk-button">
+                <a href="apply" class="g-button"><span>Подать заявку</span></a>
+              </div>
+              <div class="lk-request js-tabs" data-tabs-name="request-type">
+                <form class="lk-request__form">
+                  <!-- Фильтры -->
+                  <div class="calendar__filter calendar__filter_request js-calendar-filter">
+                    <div class="calendar__filter-toggle js-toggle">Фильтр</div>
+                    <div class="calendar__filter-wrap js-content">
+                      <div class="calendar__filter-header">
+                        <p>Скрыть фильтр</p>
+
+                      </div>
+                      <div class="calendar__filter-item calendar__filter-item_checkbox">
+                        <p class="calendar__filter-label">Дисциплина:</p>
+                        <div class="calendar__filter-checkbox">
+                          <label class="checkbox">
+                                    <span class="checkbox__box">
+                                        <input type="checkbox"
+                                               class="checkbox__control" checked>
+                                        <span class="checkbox__indicator"></span>
+                                    </span>
+                            <span class="checkbox__content">Конкур</span>
+                          </label>
+                        </div>
+                        <div class="calendar__filter-checkbox">
+                          <label class="checkbox">
+                                    <span class="checkbox__box">
+                                        <input type="checkbox"
+                                               class="checkbox__control">
+                                        <span class="checkbox__indicator"></span>
+                                    </span>
+                            <span class="checkbox__content">Выездка</span>
+                          </label>
+                        </div>
+                        <div class="calendar__filter-checkbox">
+                          <label class="checkbox">
+                                    <span class="checkbox__box">
+                                        <input type="checkbox"
+                                               class="checkbox__control">
+                                        <span class="checkbox__indicator"></span>
+                                    </span>
+                            <span class="checkbox__content">Троеборье</span>
+                          </label>
+                        </div>
+                        <div class="calendar__filter-checkbox">
+                          <label class="checkbox">
+                                                <span class="checkbox__box">
+                                                    <input type="checkbox"
+                                                           class="checkbox__control">
+                                                    <span class="checkbox__indicator"></span>
+                                                </span>
+                            <span class="checkbox__content">Другое</span>
+                          </label>
+                        </div>
+                      </div>
+                      <div class="calendar__filter-footer">
+                        <button class="g-button g-button_light js-toggle" type="reset">Сбросить
+                        </button>
+                        <button class="g-button">Применить</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lk-request__tabs">
+                    <div class="tabs__item-label js-tabs-link is-active" data-tabs-name="request-type"
+                         data-group="all">Соревнования (<span class="js-orders-count">0</span>)
+                    </div>
+                    <div class="tabs__item-label js-tabs-link" data-tabs-name="request-type"
+                         data-group="accommodation">Размещение лошади (<span class="js-accommodation-count">0</span>)
+                    </div>
+                  </div>
+                </form>
+                <div class="tabs__content js-tabs-content" data-tabs-name="request-type" data-group="all">
+                  <div class="js-tabs" data-tabs-name="request">
+                    <form class="lk-request__form">
+                      <div class="lk-request__tabs">
+                        <div class="tabs__item-label js-tabs-link is-active" data-tabs-name="request"
+                             data-group="relevant">Актуальные
+                        </div>
+                        <div class="tabs__item-label js-tabs-link" data-tabs-name="request"
+                             data-group="archive">Архив
+                        </div>
+                      </div>
+                    </form>
+                    <!-- Актуальные -->
+                    <div class="tabs__content js-tabs-content" data-tabs-name="request" data-group="relevant">
+                      <div class="lk-request__list">
+                        У вас нет активных заявок
+                      </div>
+                    </div>
+                    <!-- Архив -->
+                    <div class="tabs__content js-tabs-content" data-tabs-name="request" data-group="archive">
+                      <div class="lk-request__list">
+                        У вас нет архивных заявок
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="tabs__content js-tabs-content" data-tabs-name="request-type" data-group="accommodation">
+                  <div class="js-tabs" data-tabs-name="accommodation" >
+                    <form class="lk-request__form">
+                      <div class="lk-request__tabs">
+                        <div class="tabs__item-label js-tabs-link is-active" data-tabs-name="accommodation"
+                             data-group="relevant-accommodation">Актуальные
+                        </div>
+                        <div class="tabs__item-label js-tabs-link" data-tabs-name="accommodation"
+                             data-group="archive-accommodation">Архив
+                        </div>
+                      </div>
+                    </form>
+
+
+                    <div class="tabs__content js-tabs-content" data-tabs-name="accommodation" data-group="relevant-accommodation">
+                      <div class="lk-request__list">
+                        У вас нет активных заявок
+                      </div>
+                    </div>
+                    <div class="tabs__content js-tabs-content" data-tabs-name="accommodation" data-group="archive-accommodation">
+
+                      <div class="lk-request__list">
+                        У вас нет архивных заявок
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      <div class="remodal-overlay remodal-is-opened" style="display: block;"></div>
+      <div class="remodal-wrapper remodal-is-closed" style="display: none;">
+    <div data-remodal-id="editProfile" data-remodal-options="hashTracking: false"
+         class="remodal modal modal_profile">
+      <div class="modal__content">
+        <form class="modal-profile js-validate js-edit-profile-form" id="updateProfile">
+          <input type="hidden" name="ID" value="3726">
+          <div class="modal-profile__header">
+            <h3 class="modal-profile__title">Редактирование профиля</h3>
+            <div class="modal-profile__photo js-upload-photo ">
+              <div class="modal-profile__photo-preview">
+                <img src="" class="js-photo-preview" alt=""/>
+              </div>
+              <label class="modal-profile__photo-label">
+                <input type="file" multiple="multiple" accept="image/*" name="AVA">
+                <span class="modal-profile__photo-icon">
+                                </span>
+              </label>
+            </div>
+          </div>
+          <div class="modal-profile__content">
+            <div class="modal-profile__group">
+              <div class="modal-profile__row">
+                <p class="modal-profile__group-title">Основные</p>
+              </div>
+              <div class="modal-profile__row">
+                <div class="modal-profile__col">
+                  <div class="modal-profile__field">
+                    <input class="modal-profile__input"
+                           name="LAST_NAME"
+                           type="text"
+                           data-inputmask-regex="[а-яА-ЯЁёa-zA-Z ]*"
+                           value="Галах"
+                           required/>
+                    <span class="modal-profile__placeholder">Фамилия</span>
+                  </div>
+                </div>
+                <div class="modal-profile__col">
+                  <div class="modal-profile__field">
+                    <input class="modal-profile__input"
+                           name="NAME"
+                           type="text"
+                           value="Виолетта"
+                           data-inputmask-regex="[а-яА-ЯЁёa-zA-Z ]*"
+                           required/>
+                    <span class="modal-profile__placeholder">Имя</span>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-profile__row">
+                <div class="modal-profile__col">
+                  <div class="modal-profile__field">
+                    <input class="modal-profile__input"
+                           name="SECOND_NAME"
+                           type="text"
+                           value="Андреевна"
+                           data-inputmask-regex="[а-яА-ЯЁёa-zA-Z ]*"
+                    />
+                    <span class="modal-profile__placeholder">Отчество</span>
+                  </div>
+                </div>
+                <div class="modal-profile__col">
+                  <div class="modal-profile__field">
+                    <input class="modal-profile__input"
+                           name="PERSONAL_BIRTHDAY"
+                           type="text"
+                           data-inputmask="'alias': 'dd.mm.yyyy', 'placeholder': '__.__.____'"
+                           value="03.08.2003"
+                           required/>
+                    <span class="modal-profile__placeholder">Дата рождения</span>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-profile__row">
+                <div class="modal-profile__col">
+                  <div class="modal-profile__select">
+                    <div class="chosen-wrapper chosen-wrapper_light is-selected"
+                         data-js="custom-scroll">
+                      <select class="chosen-select js-chosen js-profile-country"
+                              data-placeholder="&nbsp;"
+                              name="PERSONAL_COUNTRY" required>
+                        <option value=""></option>
+                        <option value="16" >Беларусь</option>
+                        <option value="17" >Россия</option>
+                        <option value="2" >Азербайджан</option>
+                        <option value="18" >Узбекистан</option>
+                      </select>
+                      <span class="modal-profile__placeholder">Страна</span>
+                    </div>
+                  </div>
+                </div>
+                <div id="profile-regions_int" class="modal-profile__col" >
+                  <div class="modal-profile__field">
+                    <input class="modal-profile__input js-profile-region-input"
+                           name="PERSONAL_STATE"
+                           type="text"
+                           value="Минск"
+                           required/>
+                    <span class="modal-profile__placeholder">Регион</span>
+                  </div>
+                </div>
+                <div id="profile-regions_rus" class="modal-profile__col" style="display: none;">
+                  <div class="modal-profile__select">
+                    <div class="chosen-wrapper chosen-wrapper_light" data-js="custom-scroll">
+                      <select class="chosen-select js-chosen js-edit-chosen js-profile-region-input" data-placeholder="&nbsp;" name="" required>
+                        <option value="Минск" >Брест</option>
+                        <option value="Минская область" >Томская область</option>
+                        <option value="Брест" >Брест</option>
+                        <option value="Витебск" >Витебск</option>
+                        <option value="Могилёв" >Могилёв</option>
+                        <option value="Гомель" >Гомель</option>
+                        <option value="Гродно" >Гродно</option>
+                        <option value="Москва" >Москва</option>
+                        <option value="Санкт-Петербург" >Санкт-Петербург</option>
+                        <option value="Украина" >Украина</option>
+                        <option value="Тверская область" >Тверская область</option>
+                        <option value="Воронежская область" >Воронежская область</option>
+                        <option value="Нижегородская область" >Нижегородская область</option>
+                        <option value="Московская область" >Московская область</option>
+                        <option value="Кыргызстан " >Кыргызстан </option>
+                        <option value="Узбекистан" >Узбекистан</option>
+                        <option value="Республика Узбекистан" >Республика Узбекистан</option>
+                        <option value="Республика Казахстан" >Республика Казахстан</option>
+                        <option value="Грузия" >Грузия</option>
+                      </select>
+                      <span class="modal-profile__placeholder">Регион</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-profile__row">
+                <div class="modal-profile__col">
+                  <div class="modal-profile__field">
+                    <input class="modal-profile__input"
+                           name="PERSONAL_CITY"
+                           type="text"
+                           value="Минск"
+                           required/>
+                    <span class="modal-profile__placeholder">Город</span>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-profile__row">
+                <div class="modal-profile__checkbox">
+                  <label class="checkbox">
+                                        <span class="checkbox__box">
+                                            <input type="checkbox"
+                                                   class="checkbox__control"
+                                                   name="UF_INTERNATIONAL" >
+                                            <span class="checkbox__indicator"></span>
+                                        </span>
+                    <span class="checkbox__content">Участвовать в международных соревнованиях</span>
+                  </label>
+                </div>
+              </div>
+              <div class="modal-profile__row" id="international_user" style="display:none">
+                <div class="modal-profile__col">
+                  <div class="modal-profile__field">
+                    <input class="modal-profile__input"
+                           name="UF_LAST_NAME_EN"
+                           type="text"
+                           data-inputmask-regex="[а-яА-ЯЁёa-zA-Z ]*"
+                           value="Galah"
+                           required/>
+                    <span class="modal-profile__placeholder">Surname</span>
+                  </div>
+                </div>
+                <div class="modal-profile__col">
+                  <div class="modal-profile__field">
+                    <input class="modal-profile__input"
+                           name="UF_NAME_EN"
+                           type="text"
+                           value="Violetta"
+                           data-inputmask-regex="[а-яА-ЯЁёa-zA-Z ]*"
+                           required/>
+                    <span class="modal-profile__placeholder">Name</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="modal-profile__group modal-profile__group_contacts">
+              <div class="modal-profile__row">
+                <p class="modal-profile__group-title">Контакты</p>
+              </div>
+              <div class="modal-profile__row">
+                <div class="modal-profile__col">
+                  <div class="modal-profile__field">
+                    <input class="modal-profile__input"
+                           name="email"
+                           type="email"
+                           value="galakhvetta1@gmail.com"
+                           required/>
+                    <span class="modal-profile__placeholder">E-mail</span>
+                  </div>
+                </div>
+                <div class="modal-profile__col">
+                  <div class="modal-profile__field">
+                    <input class="modal-profile__input"
+                           name="PERSONAL_PHONE"
+                           type="tel"
+                           value="+375 (29) 696-45-20"
+                           data-inputmask="'mask': '+375 (29/44/25) 999-99-99'"
+                           autocomplete="off"/>
+                    <span class="modal-profile__placeholder">Телефон</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-profile__group modal-profile__group_data">
+              <div class="modal-profile__row">
+                <p class="modal-profile__group-title">Данные спортсмена</p>
+              </div>
+              <div class="modal-profile__row">
+                <div class="modal-profile__col">
+                  <div class="modal-profile__select">
+                    <div class="chosen-wrapper chosen-wrapper_light is-selected" data-js="custom-scroll">
+                      <select class="js-chosen no-search"
+                              data-placeholder="&nbsp;"
+                              name="UF_RAZR" required>
+                        <option value=""></option>
+                        <option value="11" >б/р</option>
+                        <option value="3" >ЗМС</option>
+                        <option value="2" >МСМК</option>
+                        <option value="1" >МС</option>
+                        <option value="4" selected>КМС</option>
+                        <option value="5" >I р.</option>
+                        <option value="6" >II р.</option>
+                        <option value="7" >III р.</option>
+                        <option value="8" >I р. юн.</option>
+                        <option value="9" >II р. юн.</option>
+                        <option value="10" >III р. юн.</option>
+                      </select>
+                      <span class="modal-profile__placeholder" style="top: -6px;">Разряд</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-profile__col">
+                  <div class="modal-profile__field">
+                    <input class="modal-profile__input js-fskr-number" name="UF_BFSK" value="22" type="text"
+                           autocomplete="off" required />
+                    <span class="modal-profile__placeholder">Номер БФКС</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-profile__group">
+              <div class="modal-profile__row">
+                <p class="modal-profile__group-title">Тренер</p>
+              </div>
+              <div class="modal-profile__row" style="margin-bottom: 0;">
+                <div class="modal-profile__field">
+                  <input class="modal-profile__input"
+                         name="UF_TRENER_FIO"
+                         type="text"
+                         data-inputmask-regex="[а-яА-ЯЁёa-zA-Z. ]*"
+                         autocomplete="off"
+                         value=""/>
+                  <span class="modal-profile__placeholder">Например, Иванов И.И.</span>
+                </div>
+              </div>
+              <div class="modal-profile__row">
+                <div class="modal-profile__desc">
+                  При заполнении или корректировки графы "Тренер" не забудьте продублировать эту информацию на эл.адрес -  info@vetaequisport.ru
+                </div>
+              </div>
+              <div class="modal-profile__row">
+                <div class="modal-profile__checkbox">
+                  <label class="checkbox">
+                                        <span class="checkbox__box">
+                                            <input type="checkbox"
+                                                   class="checkbox__control"
+                                                   name="UF_ALLOW_EDIT" >
+                                            <span class="checkbox__indicator"></span>
+                                        </span>
+                    <span class="checkbox__content">Разрешить тренеру управлять заявками</span>
+                  </label>
+                </div>
+                <div class="modal-profile__checkbox">
+                  <label class="checkbox">
+                                        <span class="checkbox__box">
+                                            <input type="checkbox"
+                                                   class="checkbox__control"
+                                                   name="UF_ALLOW_EDIT_PROF" >
+                                            <span class="checkbox__indicator"></span>
+                                        </span>
+                    <span class="checkbox__content">Разрешить тренеру редактировать личные данные </span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-profile__footer">
+            <button class="g-button">Сохранить</button>
+          </div>
+        </form>
+      </div>
+    </div>
+      </div>
+
+    <div data-remodal-id="updatePassword" data-remodal-options="hashTracking: false"
+         class="remodal modal modal_profile">
+      <a data-remodal-action="close" class="modal__close">
+
+      </a>
+      <div class="modal__content">
+        <form class="modal-profile js-validate js-edit-profile-form" id="updatePassword">
+          <input type="hidden" name="ID" value="3726">
+          <div class="modal-profile__header">
+            <h3 class="modal-profile__title">Смена пароля</h3>
+          </div>
+          <div class="modal-profile__content">
+            <div class="modal-profile__group">
+              <div class="modal-profile__row">
+                <div class="modal-profile__field">
+                  <input class="modal-profile__input"
+                         name="PASSWORD"
+                         type="password"
+                         value=""
+                         required/>
+                  <span class="modal-profile__placeholder">Пароль</span>
+                </div>
+              </div>
+              <div class="modal-profile__row">
+                <div class="modal-profile__field">
+                  <input class="modal-profile__input"
+                         name="CONFIRM_PASSWORD"
+                         type="password"
+                         value=""
+                         required/>
+                  <span class="modal-profile__placeholder">Подтверждение пароля</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-profile__footer">
+            <button class="g-button">Изменить пароль</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div data-remodal-options="hashTracking: false" data-remodal-id="editHorse" class="remodal modal modal_profile js-edit-horse-modal">
+      <a data-remodal-action="close" class="modal__close">
+
+      </a>
+      <div class="modal__content">
+        <form class="modal-profile js-validate js-edit-profile-form">
+          <input type="hidden" name="ID" value="">
+          <div class="modal-profile__header">
+            <h3 class="modal-profile__title">Данные лошади</h3>
+            <div class="modal-profile__photo js-upload-photo">
+              <div class="modal-profile__photo-preview">
+                <img src="" class="js-photo-preview" alt=""/>
+              </div>
+              <label class="modal-profile__photo-label">
+                <input type="file" multiple="multiple" accept="image/*" name="AVA">
+                <span class="modal-profile__photo-icon">
+
+                                </span>
+              </label>
+            </div>
+          </div>
+          <div class="modal-profile__content">
+            <div class="modal-profile__group">
+              <div class="modal-profile__row">
+                <p class="modal-profile__group-title">Основные</p>
+              </div>
+              <div class="modal-profile__row">
+                <div class="modal-profile__col">
+                  <div class="modal-profile__field">
+                    <input class="modal-profile__input js-name"
+                           name="NAME"
+                           type="text"
+                           data-inputmask-regex="[а-яА-ЯЁё0-9\- ]*"
+                           required/>
+                    <span class="modal-profile__placeholder">Кличка</span>
+                  </div>
+                </div>
+                <div class="modal-profile__col">
+                  <div class="modal-profile__field">
+                    <div class="modal-profile__select">
+                      <div class="chosen-wrapper chosen-wrapper_light" data-js="custom-scroll">
+                        <select class="chosen-select js-chosen js-country" data-placeholder="&nbsp;"
+                                name="COUNTRY" required>
+                          <option value=""></option>
+                          <option value="Австралия">Австралия</option>
+                          <option value="Австрия">Австрия</option>
+                          <option value="Азербайджан">Азербайджан</option>
+                          <option value="Албания">Албания</option>
+                          <option value="Алжир">Алжир</option>
+                          <option value="Американские Виргинские острова">Американские Виргинские острова</option>
+                          <option value="Ангилья">Ангилья</option>
+                          <option value="Ангола">Ангола</option>
+                          <option value="Андорра">Андорра</option>
+                          <option value="Антарктида">Антарктида</option>
+                          <option value="Антигуа и Барбуда">Антигуа и Барбуда</option>
+                          <option value="Антильские острова">Антильские острова</option>
+                          <option value="Арабские Эмираты">Арабские Эмираты</option>
+                          <option value="Аргентина">Аргентина</option>
+                          <option value="Армения">Армения</option>
+                          <option value="Аруба">Аруба</option>
+                          <option value="Афганистан">Афганистан</option>
+                          <option value="Багамские острова">Багамские острова</option>
+                          <option value="Бангладеш">Бангладеш</option>
+                          <option value="Барбадос">Барбадос</option>
+                          <option value="Бахрейн">Бахрейн</option>
+                          <option value="Беларусь">Беларусь</option>
+                          <option value="Белиз">Белиз</option>
+                          <option value="Бельгия">Бельгия</option>
+                          <option value="Бенин">Бенин</option>
+                          <option value="Бермудские острова">Бермудские острова</option>
+                          <option value="Болгария">Болгария</option>
+                          <option value="Боливия">Боливия</option>
+                          <option value="Босния и Герцеговина">Босния и Герцеговина</option>
+                          <option value="Ботсвана">Ботсвана</option>
+                          <option value="Бразилия">Бразилия</option>
+                          <option value="Британские Виргинские острова">Британские Виргинские острова</option>
+                          <option value="Британские территории в Индийском Океане">Британские территории в Индийском Океане</option>
+                          <option value="Бруней">Бруней</option>
+                          <option value="Буркина Фасо">Буркина Фасо</option>
+                          <option value="Бурунди">Бурунди</option>
+                          <option value="Бутан">Бутан</option>
+                          <option value="Вануату">Вануату</option>
+                          <option value="Ватикан">Ватикан</option>
+                          <option value="Великобритания">Великобритания</option>
+                          <option value="Венгрия">Венгрия</option>
+                          <option value="Венесуэлла">Венесуэлла</option>
+                          <option value="Восточный Тимор">Восточный Тимор</option>
+                          <option value="Вьетнам">Вьетнам</option>
+                          <option value="Габон">Габон</option>
+                          <option value="Гаити">Гаити</option>
+                          <option value="Гамбия">Гамбия</option>
+                          <option value="Гана">Гана</option>
+                          <option value="Гваделупа">Гваделупа</option>
+                          <option value="Гватемала">Гватемала</option>
+                          <option value="Гвиана">Гвиана</option>
+                          <option value="Гвинея">Гвинея</option>
+                          <option value="Гвинея-Биссау">Гвинея-Биссау</option>
+                          <option value="Германия">Германия</option>
+                          <option value="Гибралтар">Гибралтар</option>
+                          <option value="Гондурас">Гондурас</option>
+                          <option value="Гонконг">Гонконг</option>
+                          <option value="Гренада">Гренада</option>
+                          <option value="Гренландия">Гренландия</option>
+                          <option value="Греция">Греция</option>
+                          <option value="Грузия">Грузия</option>
+                          <option value="Гуана">Гуана</option>
+                          <option value="Дания">Дания</option>
+                          <option value="Демократическая республика Конго">Демократическая республика Конго</option>
+                          <option value="Джибути">Джибути</option>
+                          <option value="Доминика">Доминика</option>
+                          <option value="Доминиканская Республика">Доминиканская Республика</option>
+                          <option value="Египет">Египет</option>
+                          <option value="Замбия">Замбия</option>
+                          <option value="Западная Сахара">Западная Сахара</option>
+                          <option value="Зимбабве">Зимбабве</option>
+                          <option value="Израиль">Израиль</option>
+                          <option value="Индия">Индия</option>
+                          <option value="Индонезия">Индонезия</option>
+                          <option value="Иордания">Иордания</option>
+                          <option value="Ирак">Ирак</option>
+                          <option value="Иран">Иран</option>
+                          <option value="Ирландия">Ирландия</option>
+                          <option value="Исландия">Исландия</option>
+                          <option value="Испания">Испания</option>
+                          <option value="Италия">Италия</option>
+                          <option value="Йемен">Йемен</option>
+                          <option value="Кабо-Верде">Кабо-Верде</option>
+                          <option value="Казахстан">Казахстан</option>
+                          <option value="Каймановы острова">Каймановы острова</option>
+                          <option value="Камбоджа">Камбоджа</option>
+                          <option value="Камерун">Камерун</option>
+                          <option value="Канада">Канада</option>
+                          <option value="Катар">Катар</option>
+                          <option value="Кения">Кения</option>
+                          <option value="Кипр">Кипр</option>
+                          <option value="Киргизия">Киргизия</option>
+                          <option value="Кирибати">Кирибати</option>
+                          <option value="Китай">Китай</option>
+                          <option value="Кокосовые острова">Кокосовые острова</option>
+                          <option value="Колумбия">Колумбия</option>
+                          <option value="Коморос">Коморос</option>
+                          <option value="Конго">Конго</option>
+                          <option value="Корея (Северная)">Корея (Северная)</option>
+                          <option value="Корея (Южная)">Корея (Южная)</option>
+                          <option value="Коста Рика">Коста Рика</option>
+                          <option value="Кот-Д`ивуар">Кот-Д`ивуар</option>
+                          <option value="Куба">Куба</option>
+                          <option value="Кувейт">Кувейт</option>
+                          <option value="Лаос">Лаос</option>
+                          <option value="Латвия">Латвия</option>
+                          <option value="Лесото">Лесото</option>
+                          <option value="Либерия">Либерия</option>
+                          <option value="Ливан">Ливан</option>
+                          <option value="Ливия">Ливия</option>
+                          <option value="Литва">Литва</option>
+                          <option value="Лихтенштейн">Лихтенштейн</option>
+                          <option value="Люксембург">Люксембург</option>
+                          <option value="Маврикий">Маврикий</option>
+                          <option value="Мавритания">Мавритания</option>
+                          <option value="Мадагаскар">Мадагаскар</option>
+                          <option value="Майотта">Майотта</option>
+                          <option value="Макао">Макао</option>
+                          <option value="Македония">Македония</option>
+                          <option value="Малави">Малави</option>
+                          <option value="Малайзия">Малайзия</option>
+                          <option value="Мали">Мали</option>
+                          <option value="Мальдивы">Мальдивы</option>
+                          <option value="Мальта">Мальта</option>
+                          <option value="Мартиника">Мартиника</option>
+                          <option value="Маршалские острова">Маршалские острова</option>
+                          <option value="Мексика">Мексика</option>
+                          <option value="Микронезия">Микронезия</option>
+                          <option value="Мозамбик">Мозамбик</option>
+                          <option value="Молдавия">Молдавия</option>
+                          <option value="Монако">Монако</option>
+                          <option value="Монголия">Монголия</option>
+                          <option value="Монтсеррат">Монтсеррат</option>
+                          <option value="Морокко">Морокко</option>
+                          <option value="Мьянма">Мьянма</option>
+                          <option value="Намибия">Намибия</option>
+                          <option value="Науру">Науру</option>
+                          <option value="Непал">Непал</option>
+                          <option value="Нигер">Нигер</option>
+                          <option value="Нигерия">Нигерия</option>
+                          <option value="Нидерланды">Нидерланды</option>
+                          <option value="Никарагуа">Никарагуа</option>
+                          <option value="Ниуэ">Ниуэ</option>
+                          <option value="Новая Зеландия">Новая Зеландия</option>
+                          <option value="Новая Каледония">Новая Каледония</option>
+                          <option value="Норвегия">Норвегия</option>
+                          <option value="Оман">Оман</option>
+                          <option value="Остров Буве">Остров Буве</option>
+                          <option value="Остров Норфолк">Остров Норфолк</option>
+                          <option value="Остров Питкэрн">Остров Питкэрн</option>
+                          <option value="Остров Рождества">Остров Рождества</option>
+                          <option value="Остров Св.Елены">Остров Св.Елены</option>
+                          <option value="Острова Кука">Острова Кука</option>
+                          <option value="Острова Сен-Пьер и Микелон">Острова Сен-Пьер и Микелон</option>
+                          <option value="Острова Сент-Киттс и Невис">Острова Сент-Киттс и Невис</option>
+                          <option value="Острова Тёркс и Кайкос">Острова Тёркс и Кайкос</option>
+                          <option value="Острова Уоллис и Футуна">Острова Уоллис и Футуна</option>
+                          <option value="Острова Херд и Макдоналд">Острова Херд и Макдоналд</option>
+                          <option value="Острова Шпицберген и Ян-Майен">Острова Шпицберген и Ян-Майен</option>
+                          <option value="Пакистан">Пакистан</option>
+                          <option value="Палау">Палау</option>
+                          <option value="Палестина">Палестина</option>
+                          <option value="Панама">Панама</option>
+                          <option value="Папуа Новая Гвинея">Папуа Новая Гвинея</option>
+                          <option value="Парагвай">Парагвай</option>
+                          <option value="Перу">Перу</option>
+                          <option value="Польша">Польша</option>
+                          <option value="Португалия">Португалия</option>
+                          <option value="Пуэрто Рико">Пуэрто Рико</option>
+                          <option value="Реюньон">Реюньон</option>
+                          <option value="Россия">Россия</option>
+                          <option value="Руанда">Руанда</option>
+                          <option value="Румыния">Румыния</option>
+                          <option value="США">США</option>
+                          <option value="Самоа">Самоа</option>
+                          <option value="Сан-Марино">Сан-Марино</option>
+                          <option value="Санта-Лючия">Санта-Лючия</option>
+                          <option value="Саудовская Аравия">Саудовская Аравия</option>
+                          <option value="Свазиленд">Свазиленд</option>
+                          <option value="Сейшеллы">Сейшеллы</option>
+                          <option value="Сенегал">Сенегал</option>
+                          <option value="Сент-Винсент и Гренадины">Сент-Винсент и Гренадины</option>
+                          <option value="Сербия">Сербия</option>
+                          <option value="Сингапур">Сингапур</option>
+                          <option value="Сирия">Сирия</option>
+                          <option value="Словакия">Словакия</option>
+                          <option value="Словения">Словения</option>
+                          <option value="Соломоновы острова">Соломоновы острова</option>
+                          <option value="Сомали">Сомали</option>
+                          <option value="Судан">Судан</option>
+                          <option value="Суринам">Суринам</option>
+                          <option value="Сьерра-Леоне">Сьерра-Леоне</option>
+                          <option value="Таджикистан">Таджикистан</option>
+                          <option value="Таиланд">Таиланд</option>
+                          <option value="Тайвань">Тайвань</option>
+                          <option value="Танзания">Танзания</option>
+                          <option value="Того">Того</option>
+                          <option value="Токелау">Токелау</option>
+                          <option value="Тонга">Тонга</option>
+                          <option value="Тринидад и Тобаго">Тринидад и Тобаго</option>
+                          <option value="Тувалу">Тувалу</option>
+                          <option value="Тунис">Тунис</option>
+                          <option value="Туркменистан">Туркменистан</option>
+                          <option value="Турция">Турция</option>
+                          <option value="Уганда">Уганда</option>
+                          <option value="Узбекистан">Узбекистан</option>
+                          <option value="Украина">Украина</option>
+                          <option value="Уругвай">Уругвай</option>
+                          <option value="Фарерские острова">Фарерские острова</option>
+                          <option value="Фижи">Фижи</option>
+                          <option value="Филиппины">Филиппины</option>
+                          <option value="Финляндия">Финляндия</option>
+                          <option value="Фолклендские острова">Фолклендские острова</option>
+                          <option value="Франция">Франция</option>
+                          <option value="Французская Полинезия">Французская Полинезия</option>
+                          <option value="Хорватия">Хорватия</option>
+                          <option value="Центральноафриканская Республика">Центральноафриканская Республика</option>
+                          <option value="Чад">Чад</option>
+                          <option value="Черногория">Черногория</option>
+                          <option value="Чехия">Чехия</option>
+                          <option value="Чили">Чили</option>
+                          <option value="Швейцария">Швейцария</option>
+                          <option value="Швеция">Швеция</option>
+                          <option value="Шри-Ланка">Шри-Ланка</option>
+                          <option value="Эквадор">Эквадор</option>
+                          <option value="Экваториальная Гвинея">Экваториальная Гвинея</option>
+                          <option value="Эль Сальвадор">Эль Сальвадор</option>
+                          <option value="Эритрея">Эритрея</option>
+                          <option value="Эстония">Эстония</option>
+                          <option value="Эфиопия">Эфиопия</option>
+                          <option value="ЮАР">ЮАР</option>
+                          <option value="Южная Георгия и Южные Сандвичевы острова">Южная Георгия и Южные Сандвичевы острова</option>
+                          <option value="Южные Французские территории">Южные Французские территории</option>
+                          <option value="Ямайка">Ямайка</option>
+                          <option value="Япония">Япония</option>
+                        </select>
+                        <span class="modal-profile__placeholder">Страна происхождения</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-profile__row">
+                <div class="modal-profile__col">
+                  <div class="modal-profile__field">
+                    <input class="modal-profile__input"
+                           name="BIRTHDATE"
+                           data-inputmask-regex="[0-9]{4}"
+                           type="text"
+                           required/>
+                    <span class="modal-profile__placeholder">Год рождения</span>
+                  </div>
+                </div>
+                <div class="modal-profile__col">
+                  <div class="modal-profile__field">
+                    <input class="modal-profile__input"
+                           name="STATE"
+                           type="text"
+                           value=""/>
+                    <span class="modal-profile__placeholder">Место рождения</span>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-profile__row">
+                <div class="modal-profile__col">
+                  <div class="modal-profile__field">
+                    <input class="modal-profile__input js-parent1"
+                           name="PARENT1"
+                           type="text"/>
+                    <span class="modal-profile__placeholder">Отец</span>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-profile__row">
+                <div class="modal-profile__checkbox">
+                  <label class="checkbox">
+                                        <span class="checkbox__box">
+                                            <input type="checkbox"
+                                                   class="checkbox__control"
+                                                   name="INTERNATIONAL" value="1">
+                                            <span class="checkbox__indicator"></span>
+                                        </span>
+                    <span class="checkbox__content">Участвует в международных соревнованиях</span>
+                  </label>
+                </div>
+              </div>
+              <div class="modal-profile__row" id="international_horse_edit" style="display: none">
+                <div class="modal-profile__col">
+                  <div class="modal-profile__field">
+                    <input class="modal-profile__input"
+                           name="NAME_OF_HORSE"
+                           type="text"
+                           data-inputmask-regex="[a-zA-Z0-9\- ]*"
+                           value=""
+                           required/>
+                    <span class="modal-profile__placeholder">Name of Horse</span>
+                  </div>
+                </div>
+                <div class="modal-profile__col">
+                  <div class="modal-profile__field">
+                    <input class="modal-profile__input"
+                           name="NAME_OF_OWNER"
+                           type="text"
+                           value=""
+                           required/>
+                    <span class="modal-profile__placeholder">Name of Owner</span>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-profile__row" id="international_horse_edit2" style="display: none">
+                <div class="modal-profile__col">
+                  <div class="modal-profile__field">
+                    <input class="modal-profile__input"
+                           name="SIRE"
+                           type="text"
+                           data-inputmask-regex="[а-яА-ЯЁёa-zA-Z ]*"
+                           value=""/>
+                    <span class="modal-profile__placeholder">Sire</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-profile__group modal-profile__group_data">
+              <div class="modal-profile__row">
+                <p class="modal-profile__group-title">Характеристики</p>
+              </div>
+              <div class="modal-profile__row">
+                <div class="modal-profile__col">
+                  <div class="modal-profile__select">
+                    <div class="chosen-wrapper chosen-wrapper_light" data-js="custom-scroll" data-search>
+                      <select class="chosen-select js-chosen js-suit" data-placeholder="&nbsp;"
+                              name="PORODA" required>
+                        <option value=""></option>
+                        <option value="48">Алтайская</option>
+                        <option value="49">Американская верховая</option>
+                        <option value="50">Англо-европейская</option>
+                        <option value="51">Англо-арабская</option>
+                        <option value="52">Андалузская</option>
+                        <option value="53">Аппалуза</option>
+                        <option value="54">Арабская</option>
+                        <option value="55">Ахалтекинская</option>
+                        <option value="56">Башкирская</option>
+                        <option value="57">Белорусская упряжная</option>
+                        <option value="58">Бельгийская теплокровная</option>
+                        <option value="59">Буденновская</option>
+                        <option value="60">Вестфальская</option>
+                        <option value="61">Владимирский тяжеловоз</option>
+                        <option value="62">Вятская</option>
+                        <option value="63">Ганноверская</option>
+                        <option value="64">Голландская тепл. (KWPN)</option>
+                        <option value="65">Голштинская</option>
+                        <option value="66">Датская спортивная</option>
+                        <option value="67">Донская</option>
+                        <option value="68">Кабардинская</option>
+                        <option value="69">Казахская</option>
+                        <option value="70">Карабахская</option>
+                        <option value="71">Карачаевская</option>
+                        <option value="72">Клеппер</option>
+                        <option value="73">Латвийская теплокровная</option>
+                        <option value="74">Липпицианская</option>
+                        <option value="75">Лузитанская</option>
+                        <option value="76">Немецкая спортивная</option>
+                        <option value="77">Ольденбургская</option>
+                        <option value="78">Орловская рысистая</option>
+                        <option value="79">Першеронская</option>
+                        <option value="80">Русская верховая</option>
+                        <option value="81">Русская рысистая</option>
+                        <option value="82">Русский тяжеловоз</option>
+                        <option value="83">Советская тяжеловоз</option>
+                        <option value="84">Терская</option>
+                        <option value="85">Тинкер (Ирландский коб)</option>
+                        <option value="86">Тракененская</option>
+                        <option value="87">Украинская верховая</option>
+                        <option value="88">Уэльский коб</option>
+                        <option value="89">Французский рысак</option>
+                        <option value="90">Французский сель</option>
+                        <option value="91">Фризская</option>
+                        <option value="92">Фьордская</option>
+                        <option value="93">Чистокровная верховая</option>
+                        <option value="94">Шайрская</option>
+                        <option value="95">Якутская</option>
+                        <option value="96">Полукровная</option>
+                        <option value="97">Помесь</option>
+                        <option value="98">Американская миниатюрная</option>
+                        <option value="99">Английский верховой пони</option>
+                        <option value="100">Бельгийский верховой пони</option>
+                        <option value="101">Нью-форестский пони</option>
+                        <option value="102">Уэльский пони</option>
+                        <option value="103">Фалабелла</option>
+                        <option value="104">Фелл</option>
+                        <option value="105">Французский верховой пони</option>
+                        <option value="106">Шетландский пони</option>
+                        <option value="107">Немецкий верховой пони</option>
+                        <option value="108">Немецкий классический пони</option>
+                        <option value="109">Райд пони</option>
+                        <option value="122">Баварская теплокровная</option>
+                        <option value="123">Венгерская спортивная</option>
+                        <option value="124">Датская теплокровная</option>
+                        <option value="125">Квотерхорс</option>
+                        <option value="126">Мекленбургская</option>
+                        <option value="127">Ольденбургская конкурная</option>
+                        <option value="128">Польская</option>
+                        <option value="129">Рейнландская</option>
+                        <option value="130">Чешская теплокровная</option>
+                        <option value="131">Шведская теплокровная</option>
+                        <option value="132">Эстонская спортивная</option>
+                      </select>
+                      <span class="modal-profile__placeholder">Порода</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-profile__col">
+                  <div class="modal-profile__select">
+                    <div class="chosen-wrapper chosen-wrapper_light" data-js="custom-scroll" data-search>
+                      <select class="chosen-select js-chosen js-suit no-search" data-placeholder="&nbsp;"
+                              name="MAST" required>
+                        <option value=""></option>
+                        <option value="13">Вороная</option>
+                        <option value="14">Гнедая</option>
+                        <option value="32">Темно-гнедая.</option>
+                        <option value="33">Серая</option>
+                        <option value="34">Рыжая</option>
+                        <option value="35">Бурая</option>
+                        <option value="36">Соловая</option>
+                        <option value="37">Буланая</option>
+                        <option value="38">Гнедо - пегая</option>
+                        <option value="39">Вороно - пегая</option>
+                        <option value="40">Рыже - пегая</option>
+                        <option value="41">Игреневая</option>
+                        <option value="42">Караковая</option>
+                        <option value="43">Чалая</option>
+                        <option value="44">Чубарая</option>
+                        <option value="45">Саврасая</option>
+                        <option value="46">Изабелловая</option>
+                        <option value="47">Мышастая</option>
+                        <option value="121">Темно-рыжий</option>
+                      </select>
+                      <span class="modal-profile__placeholder">Масть</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-profile__col">
+                  <div class="modal-profile__select">
+                    <div class="chosen-wrapper chosen-wrapper_light" data-js="custom-scroll">
+                      <select class="chosen-select js-chosen js-gender no-search" data-placeholder="&nbsp;"
+                              name="POL" required>
+                        <option value=""></option>
+                        <option value="15">Жеребец</option>
+                        <option value="16">Мерин</option>
+                        <option value="31">Кобыла</option>
+                      </select>
+                      <span class="modal-profile__placeholder">Пол</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-profile__group">
+              <div class="modal-profile__row">
+                <p class="modal-profile__group-title">Идентификационные данные</p>
+              </div>
+              <div class="modal-profile__row">
+                <div class="modal-profile__col">
+                  <div class="modal-profile__field">
+                    <input class="modal-profile__input js-fskr-number" name="BFSK" type="text"
+                           autocomplete="off" required />
+                    <span class="modal-profile__placeholder">Номер БФКС</span>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-profile__row">
+                <div class="modal-profile__col">
+                  <div class="modal-profile__select">
+                    <div class="chosen-wrapper chosen-wrapper_light" data-js="custom-scroll">
+                      <select class="chosen-select js-chosen js-club js-edit-chosen" data-placeholder="&nbsp;" name="CLUB" required>
+                        <option value="Veta Stables">Veta Stables</option>
+                        <option value="РЦОПКСиК Ратомка">РЦОПКСиК Ратомка</option>
+                        <option value="КСК Believe">КСК Believe</option>
+                        <option value="КСК Piaffe">КСК Piaffe</option>
+                      </select>
+                      <span class="modal-profile__placeholder">Клуб</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-profile__col">
+                  <div class="modal-profile__field">
+                    <input class="modal-profile__input js-owner" name="VLADELEC" type="text" autocomplete="off"
+                           required>
+                    <span class="modal-profile__placeholder">Владелец</span>
+                  </div>
+                  <div class="modal-profile__desc">
+                    Например: Иванов И.И. / КФХ Тракен
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-profile__additional">
+              <label class="checkbox">
+                                <span class="checkbox__box">
+                                            <input type="checkbox" class="checkbox__control" name="POST" value="1">
+                                            <span class="checkbox__indicator"></span>
+                                        </span>
+                <span class="checkbox__content">Постоялец&nbsp;Veta Stables</span>
+              </label>
+              <div class="modal-profile__desc">
+                Отметьте этот пункт, если Ваша лошадь содержатся на постое в VETA STABLES. В этом случае при
+                подаче заявок на соревнования Вам не нужно будет вводить дополнительные данные по размещению и
+                содержанию лошадей на время соревнований.
+              </div>
+            </div>
+          </div>
+          <div class="modal-profile__footer">
+            <button class="g-button">Сохранить</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div><!--g-main__content-->
+</div><!--g-main-->
+      <footer class="footer">
+        <div class="footer__row footer__row_top">
+          <div class="g-wrap">
+            <div class="footer__nav">
+              <div class="footer__nav-group">
+                <div class="footer__nav-item footer__nav-item--main">
+                  <a href="/" class="footer__nav-link footer__nav-link--main"></a>
+                </div>
+              </div>
+
+              <div class="footer__nav-group">
+                <div class="footer__nav-item"><a href="https://www.Vetastables.ru/" class="footer__nav-link">Veta Stables</a></div>
+                <div class="footer__nav-item"><a href="https://www.Vetamavet.ru/" class="footer__nav-link">Veta Vet</a></div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="footer__row footer__row_bottom">
+          <div class="g-wrap">
+            <div class="footer__info">
+              <p>@ Veta Equisport</p>
+              <a href="/privacy/" class="footer__agreement">Соглашение на обработку персональных данных</a>
+              <div class="footer__developers">
+              </div>
+            </div>
+          </div>
+        </div></footer>
+
+
+</body>
+</html>
